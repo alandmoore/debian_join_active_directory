@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Feel free to replace with your favorite PM frontend
-INSTALL_CMD="aptitude install"
+INSTALL_CMD="aptitude install -y"
 
 
 # This script should join Debian Jessie (8) to an Active Directory domain.
@@ -13,7 +13,7 @@ if ! $(sudo which realmd 2>/dev/null); then
 fi
 
 if ! $(sudo which ntpd 2>/dev/null); then
-    sudo $INSTALL_CMD install ntp
+    sudo $INSTALL_CMD ntp
 fi
 
 sudo mkdir -p /var/lib/samba/private
@@ -37,7 +37,7 @@ sudo touch /etc/sssd/sssd.conf
 sudo systemctl enable sssd
 sudo systemctl start sssd
 
-echo "session required pam_mkhomedir.so skel=/etc/skel/ umask=0022" | sudo tee -a /etc/pam.d/common-session
+echo "session required pam_mkhomedir.so skel=/etc/skel/ umask=0022" | sudo tee -a /etc/pam.d/common-session >/dev/null
 
 # configure sudo
 sudo $INSTALL_CMD libsss-sudo
