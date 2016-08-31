@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Feel free to replace with your favorite PM frontend
-INSTALL_CMD="aptitude install -y"
+INSTALL_CMD="apt-get install -y"
 
 
 # This script should join Debian Jessie (8) to an Active Directory domain.
